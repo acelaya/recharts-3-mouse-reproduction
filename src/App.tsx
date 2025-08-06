@@ -1,6 +1,6 @@
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
+import { Line, LineChart } from 'recharts';
+import type { LineProps } from 'recharts';
 import './App.css';
-import type { CategoricalChartFunc } from 'recharts/types/chart/types';
 
 const data = [
   { name: 'a', value: 100 },
@@ -12,15 +12,11 @@ const data = [
   { name: 'g', value: 50 }
 ];
 
-export default function App({ onMouseDown }: { onMouseDown?: CategoricalChartFunc }) {
+export default function App({ onMouseDown }: { onMouseDown?: LineProps['onMouseDown'] }) {
   return (
     <div className="card" data-testid="foo">
-      <LineChart width={800} height={400} data={data} onMouseDown={onMouseDown}>
-        <XAxis dataKey="name" />
-        <YAxis dataKey="value" />
-        <Tooltip />
-        <CartesianGrid strokeOpacity={0.1} />
-        <Line dataKey="value" />
+      <LineChart width={800} height={400} data={data} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+        <Line dataKey="value" onMouseDown={onMouseDown} />
       </LineChart>
     </div>
   )
