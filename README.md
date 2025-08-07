@@ -11,6 +11,7 @@ Then, if you click anywhere in the chart, you'll see the state logged in the bro
 
 ## Run tests
 
+    npx playwright install chromium
     node --run test
 
 The tests should fail, as it is expecting the state passed to `onMouseDown` not to have undefined properties.
